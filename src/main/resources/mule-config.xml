@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" xmlns:https="http://www.mulesoft.org/schema/mule/https"
+  xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:stdio="http://www.mulesoft.org/schema/mule/stdio"
+  xsi:schemaLocation="
+          http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/3.1/mule-cxf.xsd
+          http://www.mulesoft.org/schema/mule/https http://www.mulesoft.org/schema/mule/https/3.1/mule-https.xsd
+          http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/3.1/mule-http.xsd
+          http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/3.1/mule.xsd
+          http://www.mulesoft.org/schema/mule/stdio http://www.mulesoft.org/schema/mule/stdio/3.1/mule-stdio.xsd">
+
+  <stdio:connector name="SystemStreamConnector" promptMessage="Please enter a stock ticker: "
+    messageDelayTime="1000" />
+
+  <model name="muleDemo">
+    <service name="echoService">
+      <inbound>
+        <stdio:inbound-endpoint system="IN" exchange-pattern="request-response" />
+      </inbound>
+      <outbound>
+        <chaining-router>
+          <stdio:outbound-endpoint system="OUT" />
+        </chaining-router>
+      </outbound>
+
+    </service>
+  </model>
+
+</mule>

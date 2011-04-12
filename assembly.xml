@@ -6,7 +6,7 @@
     <!-- this file describes how to build the file distribution for this project
          Developers should not change the structure, but may need edit the dependency sets at the bottom as necessary
     -->
-    <id>muledemo</id>
+    <id>test</id>
     <formats>
         <format>tar.gz</format>
         <format>zip</format>
@@ -39,7 +39,7 @@
             <useTransitiveDependencies>true</useTransitiveDependencies>
             <useStrictFiltering>false</useStrictFiltering>
             <includes>
-                <include>org.mule.application:muledemo</include>
+                <include>org.mule.application:test</include>
             </includes>
             <excludes>
                 <!-- exclude all Mule dependencies since they will be avialable in the container -->
